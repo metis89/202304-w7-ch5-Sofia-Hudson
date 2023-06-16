@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:new": "node --watch dist/index.js",
-    "server": "cross-env DEBUG=W7* nodemon dist/index.js",
+    "server": "cross-env DEBUG=W7* PORT=4400 nodemon dist/index.js",
     "server2": "nodemon dist/index.js",
     "build": "tsc --watch",
     "build:prod": "tsc",
@@ -17,15 +17,15 @@
   "author": "Sofia Hudson",
   "license": "ISC",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.13",
     "@types/debug": "^4.1.8",
     "@types/express": "^4.17.17",
     "@types/inquirer": "^9.0.3",
     "@types/jest": "^29.5.2",
+    "@types/jsonwebtoken": "^9.0.2",
     "@types/mongoose": "^5.11.97",
     "@types/morgan": "^1.9.4",
-    "@types/bcrypt": "^5.0.0",
-    "@types/jsonwebtoken": "^9.0.2",
     "@types/node": "^20.2.5",
     "@typescript-eslint/eslint-plugin": "^5.59.9",
     "@typescript-eslint/parser": "^5.59.9",
@@ -44,13 +44,13 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
-    "jsonwebtoken": "^9.0.0",
     "commander": "^10.0.1",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
-    "dotenv": "^16.1.4",
+    "dotenv": "^16.2.0",
     "express": "^4.18.2",
     "inquirer": "^9.2.7",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.2.4",
     "morgan": "^1.10.0"
   }
