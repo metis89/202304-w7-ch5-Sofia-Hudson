@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "description": "week7-challenge1-nitin-ganwani",
+  "description": "week7-challenge5-sofia-hudson",
   "type": "module",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "test:prod": "jest --watchAll --coverage --watchAll=false --passWithNoTests"
   },
   "keywords": [],
-  "author": "Nitin Ganwani",
+  "author": "Sofia Hudson",
   "license": "ISC",
   "devDependencies": {
     "@types/cors": "^2.8.13",
