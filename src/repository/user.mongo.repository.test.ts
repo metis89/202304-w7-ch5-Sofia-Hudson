@@ -32,8 +32,8 @@ describe('Given the UserRepo class', () => {
     test('Then the method post should be used', async () => {
       const mockUser = {
         id: '1',
-        userName: 'Nitin',
-        email: 'nitin@isdi.com',
+        userName: 'Ernestina',
+        email: 'er@misifu.com',
         password: 'abcd',
       };
       UserModel.create = jest.fn().mockReturnValueOnce(mockUser);
