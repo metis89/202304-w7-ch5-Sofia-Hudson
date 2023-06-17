@@ -18,15 +18,15 @@ describe('Given the UserRepo class', () => {
 
     test('Then the method getById should be used', async () => {
       const mockId = '2';
-      const mockFilm = { id: '2', title: '' };
-      const exec = jest.fn().mockResolvedValue(mockFilm);
+      const mockUser = { id: '2', title: '' };
+      const exec = jest.fn().mockResolvedValue(mockUser);
       UserModel.findById = jest.fn().mockReturnValueOnce({
         exec,
       });
       const result = await repo.getById(mockId);
       expect(UserModel.findById).toHaveBeenCalled();
       expect(exec).toHaveBeenCalled();
-      expect(result).toEqual(mockFilm);
+      expect(result).toEqual(mockUser);
     });
 
     test('Then the method post should be used', async () => {
