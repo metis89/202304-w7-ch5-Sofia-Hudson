@@ -2,7 +2,7 @@ import { UserModel } from './user.mongo.model.js';
 import { UserRepo } from './user.mongo.repository.js';
 
 describe('Given the UserRepo class', () => {
-  describe('When it has been instantiate', () => {
+  describe('When it has been instantiated', () => {
     const repo = new UserRepo();
 
     test('Then the method getAll should be used', async () => {
@@ -17,8 +17,8 @@ describe('Given the UserRepo class', () => {
     });
 
     test('Then the method getById should be used', async () => {
-      const mockId = '2';
-      const mockUser = { id: '2', title: '' };
+      const mockId = '3';
+      const mockUser = { id: '3', title: '' };
       const exec = jest.fn().mockResolvedValue(mockUser);
       UserModel.findById = jest.fn().mockReturnValueOnce({
         exec,
@@ -34,7 +34,7 @@ describe('Given the UserRepo class', () => {
         id: '1',
         userName: 'Ernestina',
         email: 'er@misifu.com',
-        password: 'abcd',
+        password: '1234',
       };
       UserModel.create = jest.fn().mockReturnValueOnce(mockUser);
       const result = await repo.post(mockUser);
