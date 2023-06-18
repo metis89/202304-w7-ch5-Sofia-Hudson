@@ -26,7 +26,5 @@ app.get('/', (req, res) => {
   res.send('Social network...');
 });
 
-// App.use('/sample', sampleRouter);
-
 app.use('/user', userRouter);
 app.use(errorHandler);

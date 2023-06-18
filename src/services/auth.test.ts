@@ -34,7 +34,7 @@ describe('Given AuthServices class', () => {
     test('Then compare should have been called', () => {
       const hash = 'Test';
       const value = 'Test';
-      AuthServices.compare(hash, value);
+      AuthServices.compare(value, hash);
       expect(bcryptjs.compare).toHaveBeenCalled();
     });
   });
