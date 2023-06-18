@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import createDebug from 'debug';
 import { userRouter } from './routers/user.router.js';
+import { errorHandler } from './middleware/error.js';
 
 const debug = createDebug('W7:App');
 
@@ -26,6 +27,6 @@ app.get('/', (req, res) => {
 });
 
 // App.use('/sample', sampleRouter);
-app.use('/friend', friendRouter);
+
 app.use('/user', userRouter);
 app.use(errorHandler);

@@ -6,6 +6,6 @@ export type User = {
 };
 
 export type UserLogin = {
-  user: string;
+  user: String; // UserName/email
   password: string;
 };
