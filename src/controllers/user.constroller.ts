@@ -4,11 +4,14 @@ import { UserRepo } from '../repository/user.mongo.repository.js';
 import { AuthServices, PayloadToken } from '../services/auth.js';
 import { HttpError } from '../types/http.error.js';
 import { LoginResponse } from '../types/response.api.js';
+import { Controller } from './controller.js';
+import { User } from '../entities/user.js';
 import createDebug from 'debug';
 const debug = createDebug('W7:UserController ');
 
-export class UserController {
-  constructor(public repo: UserRepo) {
+export class UserController extends Controller<User> {
+  constructor(protected repo: UserRepo) {
+    super();
     debug('Instantiated');
   }
 

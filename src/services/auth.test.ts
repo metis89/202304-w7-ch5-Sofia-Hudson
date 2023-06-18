@@ -14,8 +14,6 @@ describe('Given AuthServices class', () => {
     });
   });
 
-  // VerifyJWTGettingPayload METHOD TEST HAS TO BE FIXED:
-
   // Describe('When method verifyJWTGettingPayload is called', () => {
   //   test('Then verify function should have been called', () => {
   //     const token = {} as string;

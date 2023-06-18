@@ -5,7 +5,7 @@ import { Repository } from './repository.js';
 import { HttpError } from '../types/http.error.js';
 const debug = createDebug('W7:UserRepo ');
 
-export class UserRepo implements Partial<Repository<User>> {
+export class UserRepo implements Repository<User> {
   constructor() {
     debug('Instantiated', UserModel);
   }
@@ -22,11 +22,6 @@ export class UserRepo implements Partial<Repository<User>> {
     return result;
   }
 
-  async post(data: Omit<User, 'id'>): Promise<User> {
-    const newUser = await UserModel.create(data);
-    return newUser;
-  }
-
   async search({
     key,
     value,
@@ -36,5 +31,25 @@ export class UserRepo implements Partial<Repository<User>> {
   }): Promise<User[]> {
     const result = await UserModel.find({ [key]: value }).exec();
     return result;
+  }
+
+  async post(data: Omit<User, 'id'>): Promise<User> {
+    const newUser = await UserModel.create(data);
+    return newUser;
+  }
+
+  async patch(id: string, data: Partial<User>): Promise<User> {
+    const newBook = await UserModel.findByIdAndUpdate(id, data, {
+      new: true,
+    }).exec();
+    if (newBook === null)
+      throw new HttpError(404, 'Not found', 'Bad id for the update');
+    return newBook;
+  }
+
+  async delete(id: string): Promise<void> {
+    const result = await UserModel.findByIdAndDelete(id).exec();
+    if (result === null)
+      throw new HttpError(404, 'Not found', 'Bad id for the delete');
   }
 }

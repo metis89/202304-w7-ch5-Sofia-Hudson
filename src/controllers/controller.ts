@@ -2,8 +2,8 @@ import { NextFunction, Request, Response } from 'express';
 import { Repository } from '../repository/repository.js';
 import { ApiResponse } from '../types/response.api.js';
 
-export abstract class Controller<T extends { id: number | string }> {
-  public repo!: Repository<T>;
+export abstract class Controller<T extends { id: string | number }> {
+  protected repo!: Repository<T>;
 
   async getAll(req: Request, res: Response, next: NextFunction) {
     try {
