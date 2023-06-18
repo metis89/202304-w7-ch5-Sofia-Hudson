@@ -3,7 +3,7 @@ import { HttpError } from '../types/http.error.js';
 import mongoose, { mongo } from 'mongoose';
 
 import createDebug from 'debug';
-const debug = createDebug('W6:ErrorMiddleware');
+const debug = createDebug('W7:ErrorMiddleware');
 
 export const errorHandler = (
   error: Error,

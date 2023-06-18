@@ -5,7 +5,7 @@ import { UserRepo } from '../repository/user.mongo.repository.js';
 import { UserController } from '../controllers/user.constroller.js';
 
 import createDebug from 'debug';
-const debug = createDebug('W7:UserRouter ');
+const debug = createDebug('W7:UserRouter');
 
 debug('Executed');
 

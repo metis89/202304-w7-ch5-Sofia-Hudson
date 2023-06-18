@@ -3,7 +3,7 @@ import createDebug from 'debug';
 import { UserModel } from './user.mongo.model.js';
 import { Repository } from './repository.js';
 import { HttpError } from '../types/http.error.js';
-const debug = createDebug('W7:UserRepo ');
+const debug = createDebug('W7:UserRepo');
 
 export class UserRepo implements Repository<User> {
   constructor() {
