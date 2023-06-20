@@ -6,7 +6,7 @@ export type User = {
   email: string;
   password: string;
   profilePicture: '';
-  friend: User[];
+  friends: User[];
   books: Book[];
 };
 

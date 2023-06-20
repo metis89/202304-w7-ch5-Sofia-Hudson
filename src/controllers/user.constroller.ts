@@ -68,4 +68,44 @@ export class UserController extends Controller<User> {
       next(error);
     }
   }
+
+  async addNewFriend(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { id } = req.body.tokenPayload as PayloadToken;
+      const user = await this.repo.getById(id);
+      delete req.body.tokenPayload;
+      const newUser = await this.repo.getById(req.params.id);
+      if (req.path.includes('friend')) {
+        user.friends.push(newUser);
+      }
+
+      await this.repo.patch(id, user);
+      res.status(201);
+      res.send(user);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async removeFriend(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { id } = req.body.tokenPayload as PayloadToken;
+      const user = await this.repo.getById(id);
+      const removedUser = await this.repo.getById(req.params.id);
+      delete req.body.tokenPayload;
+
+      if (req.path.includes('friend')) {
+        const userIndex = user.friends.findIndex(
+          (item) => item.id === removedUser.id
+        );
+        user.friends.splice(userIndex, 1);
+      }
+
+      await this.repo.patch(id, user);
+      res.status(201);
+      res.send(user);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
