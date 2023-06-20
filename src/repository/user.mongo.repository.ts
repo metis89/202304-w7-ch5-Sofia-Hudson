@@ -11,14 +11,21 @@ export class UserRepo implements Repository<User> {
   }
 
   async getAll(): Promise<User[]> {
-    const allData = await UserModel.find({}).exec();
+    const allData = await UserModel.find()
+      .populate('friends', {
+        id: 0,
+        friends: 0,
+      })
+      .exec();
     return allData;
   }
 
   async getById(id: string): Promise<User> {
-    const result = await UserModel.findById(id).exec();
+    const result = await UserModel.findById(id)
+      .populate('friends', { id: 0, friends: 0})
+      .exec();
     if (result === null)
-      throw new HttpError(400, 'Not found', 'No item found with this id.');
+      throw new HttpError(400, 'Not found', 'No user found with this id.');
     return result;
   }
 
@@ -42,14 +49,18 @@ export class UserRepo implements Repository<User> {
     const newBook = await UserModel.findByIdAndUpdate(id, data, {
       new: true,
     }).exec();
-    if (newBook === null)
-      throw new HttpError(404, 'Not found', 'Bad id for the update');
+     if (newUser === null) {throw new HttpError(404, 'Not found', 'Invalid id');
+    return newUser},
+      if (newBook === null){
+      throw new HttpError(404, 'Not found', 'Invalid id');
     return newBook;
   }
+  }
+
 
   async delete(id: string): Promise<void> {
     const result = await UserModel.findByIdAndDelete(id).exec();
     if (result === null)
-      throw new HttpError(404, 'Not found', 'Bad id for the delete');
+      throw new HttpError(404, 'Not found', 'Invalid id');
   }
 }

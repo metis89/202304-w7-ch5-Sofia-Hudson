@@ -18,7 +18,7 @@ export const errorHandler = (
     res.status(error.status);
     res.statusMessage = error.message;
     res.send({
-      status: error.status + ' ' + error.statusMessage,
+      status: error.status,
     });
     return;
   }

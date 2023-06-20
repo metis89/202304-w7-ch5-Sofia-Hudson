@@ -36,28 +36,28 @@ export class AuthInterceptor {
     }
   }
 
-  async authorizedForSeeUsers(req: Request, res: Response, next: NextFunction) {
-    try {
-      if (!req.body.tokenPayload) {
-        throw new HttpError(
-          498,
-          'Token not found',
-          'Token not found in Authorized interceptor'
-        );
-      }
+  // Async authorizedForSeeUsers(req: Request, res: Response, next: NextFunction) {
+  //   try {
+  //     if (!req.body.tokenPayload) {
+  //       throw new HttpError(
+  //         498,
+  //         'Token not found',
+  //         'Token not found in Authorized interceptor'
+  //       );
+  //     }
 
-      const { id: userId } = req.body.tokenPayload as PayloadToken;
-      const { id: friendId } = req.params;
+  //     const { id: userId } = req.body.tokenPayload as PayloadToken;
+  //     const { id: friendId } = req.params;
 
-      const user = await this.userRepo.getById(friendId);
+  //     const user = await this.userRepo.getById(friendId);
 
-      if (user.id !== userId) {
-        throw new HttpError(401, 'Not authorized', 'Not authorized');
-      }
+  //     if (user.id !== userId) {
+  //       throw new HttpError(401, 'Not authorized', 'Not authorized');
+  //     }
 
-      next();
-    } catch (error) {
-      next(error);
-    }
-  }
+  //     next();
+  //   } catch (error) {
+  //     next(error);
+  //   }
+  // }
 }
