@@ -22,9 +22,5 @@ app.use(express.static('public'));
 
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-  res.send('Social network...');
-});
-
 app.use('/user', userRouter);
 app.use(errorHandler);
