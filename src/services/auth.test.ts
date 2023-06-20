@@ -14,14 +14,14 @@ describe('Given AuthServices class', () => {
     });
   });
 
-  // Describe('When method verifyJWTGettingPayload is called', () => {
-  //   test('Then verify function should have been called', () => {
-  //     const token = {} as string;
-  //     const result = AuthServices.verifyJWTGettingPayload(token);
-  //     expect(jwt.verify).toHaveBeenCalled();
-  //     expect(result).toEqual(token);
-  //   });
-  // });
+  describe('When method verifyJWTGettingPayload is called', () => {
+    test('Then verify function should have been called', () => {
+      const token = {} as string;
+      const result = AuthServices.verifyJWTGettingPayload(token);
+      expect(jwt.verify).toHaveBeenCalled();
+      expect(result).toEqual(token);
+    });
+  });
 
   describe('When method AuthServices.hash is called', () => {
     test('Then hash should have been called', () => {
